@@ -1,0 +1,5 @@
+<mat-list>
+  <mat-list-item *ngFor="let email of emails">
+    <gm-email-list-item [email]="email"  [routerLink]="[email.id]"></gm-email-list-item>
+  </mat-list-item>
+</mat-list>

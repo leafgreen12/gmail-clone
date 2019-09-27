@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { GmTopNavModule } from './gm-top-nav/gm-top-nav.module';
-import { GmSettingsModule } from './gm-settings/gm-settings.module';
+import { GmSideNavModule } from './gm-side-nav/gm-side-nav.module';
+import { GmEmailModule } from './gm-email/gm-email.module';
+import { GmDetailModule } from './gm-detail/gm-detail.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,11 @@ import { GmSettingsModule } from './gm-settings/gm-settings.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     GmTopNavModule,
-    CoreModule
+    GmSideNavModule,
+    GmEmailModule,
+    CoreModule,
+    GmDetailModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

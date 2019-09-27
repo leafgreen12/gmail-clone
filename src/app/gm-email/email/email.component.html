@@ -1,0 +1,15 @@
+<div class="nav">
+  <button mat-button (click)="goBack()"><mat-icon>reply</mat-icon></button>
+</div>
+
+<div class="meta">
+  from <strong>{{email.from.firstName}}, {{email.from.lastName}}</strong>
+</div>
+
+<div class="body" [innerHTML]="email.body"></div>
+
+
+<div class="signature">
+  <p>Thanks,</p>
+  <p>{{email.from.firstName}}</p>
+</div>
