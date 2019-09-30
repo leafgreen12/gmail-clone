@@ -1,0 +1,22 @@
+<form action="" [formGroup]="form" (ngSubmit)="onSubmitDynamicForm()">
+  <div *ngIf="form.controls.firstName?.errors && form.controls.firstName?.touched">
+    <small class="form-text text-danger" *ngIf="form.controls.firstName?.errors.required">
+      Name is required.
+    </small>
+    <small class="form-text text-danger" *ngIf="form.controls.firstName?.errors.maxlength">
+      Name cannot be longer than 200 characters.
+    </small>
+  </div>
+  <div *ngFor="let field of fields">
+    <div class="form-group">
+<!--      <label [for]="field.id" class="col-form-label">{{field.name}}</label>-->
+      <div [ngSwitch]="field.type">
+        <app-text-input *ngSwitchCase="'text'" [placeholder]="field.name" [formControlName]="field.name"></app-text-input>
+        <ng-container *ngSwitchCase="'dropdown'">
+          <app-select-input [values]="field.options" *ngSwitchCase="'dropdown'" [formControlName]="field.name"></app-select-input>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+</form>
