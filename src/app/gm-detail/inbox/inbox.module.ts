@@ -17,6 +17,11 @@ import {SharedComponentsModule} from '../../shared/components/components.module'
     CoreModule,
     SharedComponentsModule,
   ],
-  declarations: [ InboxComponent, PrimaryComponent, PromotionsComponent, SocialComponent ]
+  declarations: [
+    InboxComponent,
+    PrimaryComponent,
+    PromotionsComponent,
+    SocialComponent
+  ]
 })
 export class GmInboxModule { }

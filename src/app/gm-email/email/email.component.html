@@ -6,7 +6,7 @@
   from <strong>{{email.from.firstName}}, {{email.from.lastName}}</strong>
 </div>
 
-<div class="body" [innerHTML]="email.body"></div>
+<div class="body" [innerHTML]="email.body | FilterStringPipe"></div>
 
 
 <div class="signature">

@@ -1,5 +1,5 @@
-<mat-form-field class="example-full-width">
-  <input autocomplete="off" style="color: black" matInput type="text" (change)="onHandleChangeValue($event.target.value)" (focus)="test()" (keyup)="onHandleChangeValue($event.target.value)"
+<mat-form-field>
+  <input autocomplete="off" style="color: black" matInput type="text" (change)="onHandleChangeValue($event.target.value)" (focus)="touched()" (keyup)="onHandleChangeValue($event.target.value)"
          class="form-control" [value]="value ? value : ''"/>
   <mat-placeholder class="placeholder" style="color: black">{{placeholder}}</mat-placeholder>
 </mat-form-field>

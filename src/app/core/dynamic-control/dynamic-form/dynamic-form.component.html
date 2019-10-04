@@ -1,22 +1,55 @@
-<form action="" [formGroup]="form" (ngSubmit)="onSubmitDynamicForm()">
-  <div *ngIf="form.controls.firstName?.errors && form.controls.firstName?.touched">
-    <small class="form-text text-danger" *ngIf="form.controls.firstName?.errors.required">
-      Name is required.
-    </small>
-    <small class="form-text text-danger" *ngIf="form.controls.firstName?.errors.maxlength">
-      Name cannot be longer than 200 characters.
-    </small>
-  </div>
-  <div *ngFor="let field of fields">
-    <div class="form-group">
-<!--      <label [for]="field.id" class="col-form-label">{{field.name}}</label>-->
-      <div [ngSwitch]="field.type">
-        <app-text-input *ngSwitchCase="'text'" [placeholder]="field.name" [formControlName]="field.name"></app-text-input>
-        <ng-container *ngSwitchCase="'dropdown'">
-          <app-select-input [values]="field.options" *ngSwitchCase="'dropdown'" [formControlName]="field.name"></app-select-input>
-        </ng-container>
+<div class="d-flex flex-auto mt-1 ml-1 h-100">
+  <div class="w-100">
+    <form action="" [formGroup]="form" (ngSubmit)="onSubmitDynamicForm()">
+      <div *ngFor="let field of fields">
+        <div class="form-group">
+          <!--      <label [for]="field.id" class="col-form-label">{{field.name}}</label>-->
+          <div [ngSwitch]="field.type">
+            <app-date-input *ngSwitchCase="'date'" [formControlName]="field.name"></app-date-input>
+            <app-text-input *ngSwitchCase="'text'" [placeholder]="field.label" [formControlName]="field.name"></app-text-input>
+            <ng-container *ngSwitchCase="'dropdown'">
+              <app-select-input [values]="field.options" *ngSwitchCase="'dropdown'" [formControlName]="field.name"></app-select-input>
+            </ng-container>
+            <ng-container *ngSwitchCase="'multipleSelect'">
+              <app-multiple-select-input [values]="field.options" *ngSwitchCase="'multipleSelect'" [formControlName]="field.name"></app-multiple-select-input>
+            </ng-container>
+          </div>
+        </div>
       </div>
-    </div>
+      <div>
+        <app-file-input [formControlName]="'fileUpload'"></app-file-input>
+        <button mat-raised-button (click)="addItem()">add item</button>
+      </div>
+      <div style="margin-bottom: 10px" [formArrayName]="'formArray'" *ngFor="let item of form.get('formArray').controls; let i = index;">
+        <ng-container [formGroupName]="i">
+          <div class="d-inline-flex mt-2">
+            <div>
+              <app-text-input [formControlName]="'key'" [placeholder]="'key'" ></app-text-input>
+              <div *ngIf="form.controls.formArray.controls[i].controls.key?.errors && form.controls.formArray.controls[i].controls.key?.touched">
+                <small class="form-text text-danger" *ngIf="form.controls.formArray.controls[i].controls.key?.errors.required">
+                  key is required.
+                </small>
+                <small class="form-text text-danger" *ngIf="form.controls.formArray.controls[i].controls.key?.errors.maxlength">
+                  key cannot be longer than 200 characters.
+                </small>
+              </div>
+            </div>
+            <div>
+              <app-text-input [formControlName]="'value'" [placeholder]="'value'" ></app-text-input>
+              <div *ngIf="form.controls.formArray.controls[i].controls.value?.errors && form.controls.formArray.controls[i].controls.value?.touched">
+                <small class="form-text text-danger" *ngIf="form.controls.formArray.controls[i].controls.value?.errors.required">
+                  value is required.
+                </small>
+                <small class="form-text text-danger" *ngIf="form.controls.formArray.controls[i].controls.value?.errors.maxlength">
+                  value cannot be longer than 200 characters.
+                </small>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <button mat-raised-button (click)="removeItem(i)">remove item</button>
+      </div>
+      <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+    </form>
   </div>
-  <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
-</form>
+</div>

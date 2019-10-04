@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>Area</mat-label>
+  <mat-select style="color: black" multiple (selectionChange)="onHandleChangeValue($event.value)" [(value)]="value">
+    <mat-option *ngFor="let item of values" [value]="item.id">
+      {{item.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

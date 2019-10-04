@@ -19,7 +19,15 @@ import {CoreModule} from '../core/core.module';
     RouterModule.forChild(routes),
     CoreModule,
   ],
-  declarations: [SettingsComponent, GeneralComponent, InboxComponent, LabelsComponent,
-    AccountsComponent, ChatComponent, LabsComponent, ThemesComponent]
+  declarations: [
+    SettingsComponent,
+    GeneralComponent,
+    InboxComponent,
+    LabelsComponent,
+    AccountsComponent,
+    ChatComponent,
+    LabsComponent,
+    ThemesComponent
+  ]
 })
 export class GmSettingsModule { }

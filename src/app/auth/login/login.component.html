@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center">
+  <div style="margin: auto; width: 50%;">
+    <h1 [appHighlight]="'red'" [appUpperCase]="'uppercase'">LOGIN</h1>
+    <app-dynamic-form [fields]="fields"></app-dynamic-form>
+    <button mat-raised-button color="primary" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+  </div>
+</div>
+<!--
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

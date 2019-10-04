@@ -19,7 +19,7 @@ export class TextInputComponent implements ControlValueAccessor {
 
   @Input('placeholder') placeholder: string;
   value: string;
-  test: () => void;
+  touched: () => void;
   private onChange = (value: any) => {};
 
   writeValue(value: string): void {
@@ -34,8 +34,8 @@ export class TextInputComponent implements ControlValueAccessor {
   }
 
   registerOnTouched(fn: any): void {
-    this.test = fn;
-    console.log(this.test);
+    this.touched = fn;
+    console.log(this.touched);
   }
 
   setDisabledState?(isDisabled: boolean): void {

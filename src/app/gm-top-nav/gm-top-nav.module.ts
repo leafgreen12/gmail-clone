@@ -13,7 +13,14 @@ import { MaterialModule } from '../core/material/material.module';
     RouterModule,
     MaterialModule
   ],
-  declarations: [NavComponent, NavLogoComponent, NavSearchComponent, NavProfileComponent],
-  exports: [NavComponent]
+  declarations: [
+    NavComponent,
+    NavLogoComponent,
+    NavSearchComponent,
+    NavProfileComponent
+  ],
+  exports: [
+    NavComponent
+  ]
 })
 export class GmTopNavModule { }

@@ -1,4 +1,2 @@
-<mat-icon>notifications</mat-icon>
-<mat-icon routerLink="settings">settings</mat-icon>
-<mat-icon>apps</mat-icon>
-<mat-icon>person</mat-icon>
+<mat-icon routerLink="/settings">settings</mat-icon>
+<button mat-raised-button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
