@@ -14,11 +14,15 @@ import {RegisterModule} from './register/register.module';
 import {AuthModule} from './auth/auth.module';
 import {MainComponent} from './main/main.component';
 import {MainsRoutingModule} from './main/main-routing.module';
+import { DynamicComponentComponent } from './dynamic-component/dynamic-component.component';
+import { DynamicComponentContentComponent } from './dynamic-component-content/dynamic-component-content.component';
+import {DynamicFormComponent} from './core/dynamic-control/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    DynamicComponentContentComponent
   ],
   imports: [
     RegisterModule,
@@ -35,6 +39,7 @@ import {MainsRoutingModule} from './main/main-routing.module';
     SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DynamicComponentContentComponent, DynamicFormComponent]
 })
 export class AppModule { }

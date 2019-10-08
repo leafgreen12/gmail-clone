@@ -18,7 +18,7 @@ import { isFunction } from 'lodash';
 export class SelectInputComponent implements ControlValueAccessor {
 
   @Input() values: any[];
-  value: string;
+  value: any;
   touched: () => void;
   private onChange = (value: any) => {};
 

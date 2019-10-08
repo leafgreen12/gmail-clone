@@ -5,16 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import {CoreModule} from '../core/core.module';
+import {AppModule} from '../app.module';
+import {DynamicComponentComponent} from '../dynamic-component/dynamic-component.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AuthRoutingModule,
-    CoreModule
+    CoreModule,
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    DynamicComponentComponent
   ]
 })
 export class AuthModule {}

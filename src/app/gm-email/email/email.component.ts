@@ -18,10 +18,14 @@ export class EmailComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
 
       const section = params.hasOwnProperty('subSection') ? params.subSection : params.section;
+      console.log(params);
 
       this.email = this.emailService.getEmail(section, params.id);
 
     });
+    this.route.queryParams.subscribe(params => {
+        console.log(params);
+      });
 
   }
 

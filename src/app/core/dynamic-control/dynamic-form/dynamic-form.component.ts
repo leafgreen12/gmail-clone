@@ -13,7 +13,7 @@ export class DynamicFormComponent implements OnInit {
   form: FormGroup;
   items: FormArray;
 
-  constructor( private formBuilder: FormBuilder) { }
+  constructor( private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -24,27 +24,27 @@ export class DynamicFormComponent implements OnInit {
   }
 
   buildForm() {
-    const fieldsControl = {};
     this.form = this.formBuilder.group({});
     this.fields.forEach( control => {
       switch (control.name) {
         case 'firstName' || 'lastName':
-          fieldsControl[control.name] = new FormControl(control.value || '', [ Validators.required, Validates.ValidateName ]);
+          // tslint:disable-next-line:max-line-length
+          this.form.addControl(control.name, this.formBuilder.control(control.value || '', [ Validators.required, Validates.ValidateName ]));
           break;
         case 'email':
-          fieldsControl[control.name] = new FormControl(control.value || '', [ Validators.required, Validates.ValidateEmail ]);
+          // tslint:disable-next-line:max-line-length
+          this.form.addControl(control.name, this.formBuilder.control(control.value || '', [ Validators.required, Validates.ValidateEmail ]));
           break;
         case 'multipleSelect':
-          fieldsControl[control.name] = new FormControl(control.value || [], [ Validators.required ]);
+          this.form.addControl(control.name, this.formBuilder.control(control.value || [], [ Validators.required ]));
           break;
         default:
-          fieldsControl[control.name] = new FormControl(control.value || '', Validators.required);
+          this.form.addControl(control.name, this.formBuilder.control(control.value || '', [ Validators.required ]));
           break;
       }
     });
-    fieldsControl['formArray'] = new FormArray([]);
-    fieldsControl['fileUpload'] = new FormControl('', Validators.required);
-    this.form = new FormGroup(fieldsControl);
+    this.form.addControl('formArray', this.formBuilder.array([]));
+    this.form.addControl('fileUpload', this.formBuilder.control('', [ Validators.required ]));
     console.log(this.form);
   }
 
@@ -57,6 +57,7 @@ export class DynamicFormComponent implements OnInit {
 
   addItem(item?: any): void {
     this.items = this.form.get('formArray') as FormArray;
+    console.log(this.form.get('formArray') as FormArray, 'xxxxx');
     this.items.push(this.createItem(item));
   }
 

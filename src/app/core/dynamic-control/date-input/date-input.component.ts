@@ -48,4 +48,7 @@ export class DateInputComponent implements ControlValueAccessor {
       this.onChange(this.value);
     }
   }
+  getValue() {
+    return this.value ? this.value : '';
+  }
 }

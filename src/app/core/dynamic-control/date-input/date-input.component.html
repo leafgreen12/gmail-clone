@@ -1,6 +1,6 @@
 <mat-form-field>
   <input autocomplete="off" [matDatepicker]="picker" style="color: black" matInput (dateChange)="onHandleChangeValue($event.target.value)" (focus)="touched()" (keyup)="onHandleChangeValue($event.target.value)"
-         class="form-control" [value]="value ? value : ''"/>
+         class="form-control" [value]="getValue()"/>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
